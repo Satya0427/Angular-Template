@@ -1,0 +1,93 @@
+<div class="user-creation-wrapper">
+    <mat-card class="creation-card">
+        <mat-card-header>
+            <mat-card-title class="card-title">
+                <mat-icon>person_add</mat-icon>
+                Create New User Account
+            </mat-card-title>
+            <mat-card-subtitle>Fill out the details below to create a new user profile.</mat-card-subtitle>
+        </mat-card-header>
+
+        <mat-card-content>
+            <form class="creation-form" [formGroup]="userForm">
+
+                <!-- PERSONAL DETAILS SECTION -->
+                <h3 class="section-heading">Personal Details</h3>
+                <mat-divider></mat-divider>
+
+                <!-- Name Fields - Using a grid for responsive two-column layout -->
+                <div class="form-row name-fields">
+                    <!-- First Name -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Name</mat-label>
+                        <input matInput name="firstName" formControlName="name">
+                        <mat-icon matSuffix>badge</mat-icon>
+                    </mat-form-field>
+
+                    <!-- Email -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Email</mat-label>
+                        <input matInput type="email" name="email" formControlName="email">
+                        <mat-icon matSuffix>email</mat-icon>
+                    </mat-form-field>
+                    
+                    <!-- Address -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Address</mat-label>
+                        <input matInput type="text" name="address" formControlName="address">
+                        <mat-icon matSuffix>location_on</mat-icon>
+                    </mat-form-field>
+
+                    <!-- Contact Number -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Contact Number</mat-label>
+                        <input matInput type="tel" name="contactNumber" formControlName="contact_number">
+                        <mat-icon matSuffix>phone</mat-icon>
+                    </mat-form-field>
+                </div>
+
+                <!-- Credentials Section -->
+                <h3 class="section-heading">Security & Profile</h3>
+                <mat-divider></mat-divider>
+
+                <div class="form-row security-profile-fields">
+                    <!-- Password -->
+                    <mat-form-field appearance="outline">
+                        <mat-label>Password</mat-label>
+                        <input matInput type="password" name="password" formControlName="password">
+                        <mat-icon matSuffix>vpn_key</mat-icon>
+                    </mat-form-field>
+
+                    <!-- Upload Profile Pic -->
+                    <div class="profile-pic-upload">
+                        <label>Upload Profile Picture</label>
+                        <input type="file" accept="image/*">
+                        <button mat-stroked-button color="accent" type="button">
+                            <mat-icon>cloud_upload</mat-icon>
+                            Choose File
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Submit Button -->
+                <div class="form-actions">
+                    <button mat-raised-button color="primary" type="submit" [disabled]="userForm.invalid"
+                        class="submit-button" (click)="createUser()">
+                        <mat-icon>save</mat-icon>
+                        CREATE USER
+                    </button>
+                    <button mat-button type="reset" class="cancel-button">
+                        Cancel
+                    </button>
+                </div>
+
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+
+<ng-template #logoutTemplate let-data>
+    <div class="my-template">
+        <p>{{ data?.message }}</p>
+    </div>
+</ng-template>

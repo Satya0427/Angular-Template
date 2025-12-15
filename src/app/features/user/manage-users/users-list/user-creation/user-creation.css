@@ -1,0 +1,156 @@
+/* Wrapper for Centering and Background */
+.user-creation-wrapper {
+    min-height: 100vh;
+    padding: 40px 20px;
+    background-color: #f5f7fa; /* Light background for contrast */
+    display: flex;
+    justify-content: center;
+}
+
+/* Main Card Container */
+.creation-card {
+    width: 100%;
+    max-width: 900px; /* A good maximum width for a desktop form */
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+}
+
+/* Card Title Styling */
+.card-title {
+    font-size: 1.8rem;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    color: #3f51b5; /* Primary color */
+    
+    mat-icon {
+        margin-right: 10px;
+        font-size: 32px;
+        height: 32px;
+        width: 32px;
+    }
+}
+
+/* Subtitle */
+mat-card-subtitle {
+    margin-top: 10px;
+    color: #6c757d;
+}
+
+/* Section Headings */
+.section-heading {
+    margin: 30px 0 15px 0;
+    padding-bottom: 5px;
+    font-size: 1.2rem;
+    color: #495057;
+    font-weight: 600;
+}
+
+mat-divider {
+    margin-bottom: 25px;
+}
+
+/* 
+ * GRID LAYOUT FOR FORM FIELDS
+ * This is the key to the good layout and responsiveness.
+ */
+.form-row {
+    display: grid;
+    gap: 20px; /* Spacing between grid items */
+    margin-bottom: 20px;
+    
+    /* Target all mat-form-fields inside the grid */
+    mat-form-field {
+        width: 100%;
+    }
+}
+
+/* Styles for Name Fields (3 columns on desktop) */
+.name-fields {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Styles for Contact & Role Fields (3 columns on desktop) */
+.contact-role-fields {
+    grid-template-columns: repeat(3, 1fr);
+}
+
+/* Styles for Security & Profile Fields (2 columns on desktop) */
+.security-profile-fields {
+    grid-template-columns: 1fr 1fr;
+    align-items: flex-start; /* Align fields to the top */
+}
+
+
+/* PROFILE PICTURE CUSTOM STYLING (simulating a material button/look) */
+.profile-pic-upload {
+    padding-top: 10px; /* Aligns vertically with the top input field */
+    
+    label {
+        display: block;
+        margin-bottom: 5px;
+        font-size: 0.75em;
+        color: rgba(0, 0, 0, 0.6);
+    }
+
+    /* Hide the default file input visually */
+    input[type="file"] {
+        width: 0.1px;
+        height: 0.1px;
+        opacity: 0;
+        overflow: hidden;
+        position: absolute;
+        z-index: -1;
+    }
+
+    /* Style the mat-stroked-button to act as the clickable file input */
+    button {
+        display: inline-flex;
+        align-items: center;
+        margin-top: 5px;
+    }
+}
+
+
+/* Form Actions (Buttons) */
+.form-actions {
+    margin-top: 40px;
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end; /* Align buttons to the right */
+}
+
+.submit-button {
+    height: 50px;
+    padding: 0 30px;
+    font-weight: 600;
+}
+
+.cancel-button {
+    height: 50px;
+}
+
+
+/* RESPONSIVENESS for Tablet and Mobile */
+@media (max-width: 768px) {
+    
+    /* Change 3-column layouts to 1 column on smaller screens */
+    .name-fields, 
+    .contact-role-fields {
+        grid-template-columns: 1fr;
+    }
+
+    /* Change 2-column security layout to 1 column */
+    .security-profile-fields {
+        grid-template-columns: 1fr;
+    }
+    
+    .profile-pic-upload {
+        padding-top: 0; /* No need for padding to align with other fields */
+    }
+
+    .form-actions {
+        justify-content: center; /* Center buttons on mobile */
+    }
+}

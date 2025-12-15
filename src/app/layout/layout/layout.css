@@ -1,0 +1,11 @@
+.header-container {
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+.content-body {
+    margin-top: 60px; /* Adjust this value based on the height of your header */
+    /* padding: 20px; */
+}

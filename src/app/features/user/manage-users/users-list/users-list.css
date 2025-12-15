@@ -1,0 +1,124 @@
+/* Wrapper and Card Styling */
+.user-list-wrapper {
+    padding: 30px;
+    background-color: #f5f7fa;
+    min-height: 100vh;
+}
+
+.user-list-card {
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* Header and Action Bar (Key for alignment) */
+.header-actions {
+    display: flex;
+    justify-content: space-between; /* Pushes title and button to opposite ends */
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.title-group {
+    display: flex;
+    align-items: center;
+    
+    .title-icon {
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        color: #3f51b5; /* Primary color */
+        margin-right: 15px;
+    }
+
+    h2 {
+        margin: 0;
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .subtitle {
+        margin: 5px 0 0 0;
+        color: #777;
+    }
+}
+
+.add-user-button {
+    height: 45px;
+    font-weight: 500;
+    padding: 0 25px;
+}
+
+mat-divider {
+    margin: 20px 0;
+}
+
+/* TABLE STYLING */
+.full-width-table {
+    width: 100%;
+    border-collapse: collapse; /* For clean lines */
+}
+
+/* Header Cells */
+.mat-header-cell {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: #444;
+    text-transform: uppercase;
+    padding: 15px 8px;
+    background-color: #fafafa; /* Subtle background for header */
+}
+
+/* Data Rows */
+.mat-row {
+    transition: background-color 0.2s ease;
+    border-bottom: 1px solid #eee;
+    
+    &:hover {
+        background-color: #eef3ff; /* Light hover effect */
+    }
+}
+
+.mat-cell {
+    padding: 12px 8px;
+    font-size: 0.9rem;
+    color: #555;
+}
+
+
+/* STATUS CHIP STYLING */
+.status-chip {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    text-transform: capitalize;
+    
+    &.active {
+        background-color: #e8f5e9; /* Green tint */
+        color: #388e3c; /* Darker green text */
+    }
+
+    &.inactive {
+        background-color: #ffebee; /* Red tint */
+        color: #d32f2f; /* Darker red text */
+    }
+}
+
+/* USER TYPE TAG STYLING */
+.user-type-tag {
+    font-weight: 500;
+    &.admin {
+        color: #f57f17; /* Accent color for Admin */
+    }
+}
+
+/* Actions Column Alignment */
+.action-cell {
+    text-align: center;
+    button {
+        padding: 0;
+    }
+}

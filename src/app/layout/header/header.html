@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="header-toolbar">
+    <span class="logo">GalleryApp</span>
+    <span class="spacer"></span>
+    <nav class="nav">
+        <a mat-button routerLink="/home">Home</a>
+        <a mat-button routerLink="/albums">Albums</a>
+        <a mat-button routerLink="/favorites">Favorites</a>
+        <a mat-raised-button color="accent" routerLink="/upload">Upload</a>
+    </nav>
+
+    <span class="spacer"></span>
+
+    <div style="padding-top: 21px;">
+        <mat-form-field>
+            <mat-label><mat-icon>palette</mat-icon> </mat-label>
+            <mat-select [value]="themeService.currentTheme$()" (valueChange)="selectTheme($event)">
+                <mat-option value="rose-red-theme">Rose & Red</mat-option>
+                <mat-option value="azure-blue-theme">Azure & Blue</mat-option>
+                <mat-option value="magenta-violet-theme">Magenta & Violet</mat-option>
+                <mat-option value="cyan-orange-theme">Cyan & Orange</mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <mat-icon class="mat-icon-large">account_circle</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>Profile</button>
+        <button mat-menu-item (click)="openTemplate()">Logout</button>
+    </mat-menu>
+</mat-toolbar>
+
+<ng-template #logoutTemplate let-data>
+    <div class="my-template">
+        <p>{{ data?.message }}</p>
+        <!-- <mat-form-field appearance="fill">
+            <mat-label>Reason</mat-label>
+            <input matInput >
+        </mat-form-field> -->
+    </div>
+</ng-template>
