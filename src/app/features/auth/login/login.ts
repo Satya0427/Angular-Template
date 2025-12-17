@@ -38,9 +38,9 @@ export class Login extends BaseComponent implements OnInit {
       email: this.loginForm.value.email,
       password: this.loginForm.value.password,
     };
-    this._apiService.post(API_ENDPOINTS.auth.login, payload,{ withCredentials: true }).subscribe({
+    this._apiService.post(API_ENDPOINTS.auth.login, payload, { withCredentials: true }).subscribe({
       next: (_res: any) => {
-        const responsedata = _res ? _res?.token?.accessToken  : "";
+        const responsedata = _res ? _res?.token?.accessToken : "";
         sessionStorage.setItem('Token', JSON.stringify(responsedata));
         this.navigateTo('/home');
       },
@@ -48,10 +48,10 @@ export class Login extends BaseComponent implements OnInit {
   }
 
 
-  navigateToRegestration(){
+  navigateToRegestration() {
     try {
       this._router.navigate(['/auth/register']);
-    } catch (err:any) {
+    } catch (err: any) {
       console.error('Navigation error:', err);
     }
   }

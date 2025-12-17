@@ -23,7 +23,7 @@ export class AuthService extends BaseComponent {
   }
 
   setAccessToken(token: string | null) {
-    if (token) sessionStorage.setItem('Token', token);
+    if (token) sessionStorage.setItem('Token', JSON.stringify(token));
     else sessionStorage.removeItem('Token');
   }
 

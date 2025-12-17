@@ -16,7 +16,7 @@ export class BaseComponent {
   protected _breadcrumb = inject(BreadcrumbService);
   protected _apiService = inject(ApiClient);
   protected _toastr = inject(ToastrService);  
-
+  
   protected readonly destroy$ = new Subject<void>();
 
   // simple navigate helper

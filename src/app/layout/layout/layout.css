@@ -1,11 +1,74 @@
+/* Reset & base */
+/* Base reset */
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  overflow: hidden; /* No global scrolling */
+}
+
+/* Header */
 .header-container {
-    width: 100%;
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  height: 64px; /* match your header */
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  background: #ffffff;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
 }
+
+/* Body wrapper */
 .content-body {
-    margin-top: 60px; /* Adjust this value based on the height of your header */
-    /* padding: 20px; */
+  display: flex;
+  flex-direction: column;
+  margin-top: 64px;
+  height: calc(100vh - 72px);
+  background-color: #f5f6fa;
 }
+
+/* Breadcrumb */
+.breadcrumb {
+  height: 48px;
+  padding: 0 16px;
+  display: flex;
+  align-items: center;
+  background-color: #ffffff;
+  border-bottom: 1px solid #e0e0e0;
+  flex-shrink: 0; /* Prevent resize */
+}
+
+/* Routed components container */
+.components {
+  flex: 1;
+  height: calc(100% - 48px);
+  padding: 16px;
+  background-color: #f5f6fa;
+  overflow: hidden; /* IMPORTANT: no scroll here */
+}
+
+
+@media (max-width: 768px) {
+  .header-container {
+    height: 56px;
+  }
+
+  .content-body {
+    height: calc(100vh - 56px);
+    margin-top: 56px;
+  }
+
+  .breadcrumb {
+    min-height: 40px;
+    padding: 0 12px;
+  }
+
+  .components {
+    padding: 12px;
+  }
+}
+

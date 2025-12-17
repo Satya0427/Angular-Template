@@ -1,33 +1,33 @@
 .header-toolbar {
-display: flex;
-align-items: center;
-padding: 0 24px;
+    display: flex;
+    align-items: center;
+    padding: 0 24px;
 }
 
 
 .logo {
-font-size: 20px;
-font-weight: 600;
+    font-size: 20px;
+    font-weight: 600;
 }
 
 
 .nav a {
-margin: 0 6px;
-font-size: 14px;
+    margin: 0 6px;
+    font-size: 14px;
 }
 
 
 .search-field {
-width: 220px;
-margin-left: 12px;
+    width: 220px;
+    margin-left: 12px;
 }
 
 
 .spacer {
-flex: 1 1 auto;
+    flex: 1 1 auto;
 }
 
-.profileIcon{
+.profileIcon {
     margin-left: 5px;
     height: 5px;
     width: 5px;

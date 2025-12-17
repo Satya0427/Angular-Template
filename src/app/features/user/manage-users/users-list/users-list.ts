@@ -7,6 +7,7 @@ import { MATERIAL } from '../../../../shared/material/materials';
 import { takeUntil } from 'rxjs';
 import { API_ENDPOINTS } from '../../../../core/config/api-endpoints';
 import { LoaderService } from '../../../../core/services/loader.service';
+import { ScrollingModule } from '@angular/cdk/scrolling';
 
 export interface User {
   id: number;
@@ -19,7 +20,7 @@ export interface User {
 
 @Component({
   selector: 'app-users-list',
-  imports: [FormsModule, CommonModule, MATERIAL],
+  imports: [FormsModule, CommonModule, MATERIAL, ScrollingModule],
   templateUrl: './users-list.html',
   styleUrl: './users-list.css',
 })
@@ -27,9 +28,15 @@ export class UsersList extends BaseComponent implements OnInit {
 
   private loader = inject(LoaderService)
   //DEPENDENCY INJUCTION VARIABLE
-  displayedColumns: string[] = ['firstName', 'email', 'contactNumber', 'userType', 'status', 'actions'];
+  displayedColumns: string[] = ['sno', 'name', 'email', 'phone_number', 'user_type', 'address', 'actions'];
   dataSource = new MatTableDataSource<User>();
   data: any
+
+  // Pagination methods
+  pagesize: number = 10;
+  pageIndex: number = 1
+  totalRecords: number = 0;
+  loading: boolean = false;
 
   ngOnInit(): void {
     this.setBreadcrumb([
@@ -38,31 +45,43 @@ export class UsersList extends BaseComponent implements OnInit {
     ]);
     this.getUsersList();
   }
+  getUsersList(index?: number) {
 
-  // API CALL FOR GET USERS LIST
-  getUsersList() {
-    this.loader.show();
+    if (this.loading) return;
+
+    if (this.totalRecords && this.dataSource.data.length >= this.totalRecords) {
+      return;
+    }
+    if (index !== undefined) {
+      const threshold = this.dataSource.data.length - 10;
+      if (index < threshold) return;
+    }
     const payload = {
-      "page_size": "",
-      "page_index": '1',
-      "search_key": ""
-    };
-    this._apiService.get(API_ENDPOINTS.users.getUsersList, payload).pipe(takeUntil(this.destroy$)).subscribe({
+      skip_records: this.dataSource.data.length
+    }
+    this.loading = true;
+    this._apiService.post(API_ENDPOINTS.users.getUsersList, payload).pipe(takeUntil(this.destroy$)).subscribe({
       next: (_res: any) => {
-        const resData = _res?.data ? _res?.data?.empdata : [];
-        const data = resData.map((item: any) => {
-          return {
-            id: item?.empid || '',
-            firstName: item?.empname || '',
-            email: item?.mail || '',
-            contactNumber: item?.contactno || '',
-            userType: item?.user_type || '',
-            status: item?.status_code || '',
-          }
-        });
-        this.dataSource = new MatTableDataSource<User>(data);
+        const resData = _res?.data || {};
+        const users = (resData.emp_data || []).map((item: any) => ({
+          name: item?.name ?? '',
+          email: item?.email ?? '',
+          phone_number: item?.phone_number ?? '',
+          address: item?.address ?? '',
+          user_type: item?.user_type ?? '',
+        }));
+        this.totalRecords = resData?.pagination?.total_records ?? users.length;
+        this.dataSource.data = [
+          ...this.dataSource.data,
+          ...users
+        ];
+
+        this.loading = false;
+      },
+      error: () => {
+        this.loading = false;
       }
-    })
+    });
   }
   onAddNewUser() {
     this._router.navigateByUrl('/home/user/user-creation')

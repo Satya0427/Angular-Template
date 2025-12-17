@@ -1,7 +1,13 @@
 <div class="header-container">
     <app-header></app-header>
 </div>
+
 <div class="content-body">
-    <app-breadcrumb></app-breadcrumb>
-    <router-outlet></router-outlet>
+    <div class="breadcrumb">
+        <app-breadcrumb></app-breadcrumb>
+    </div>
+
+    <div class="components">
+        <router-outlet></router-outlet>
+    </div>
 </div>
