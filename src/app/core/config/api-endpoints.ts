@@ -9,5 +9,8 @@ export const API_ENDPOINTS = {
         getUsersList:`/user/users-list`,
         createUser:`/user/creation`,
         editUser:`/users/V1/edit`,
+    },
+    gallery:{
+        getImages:`/gallery/view_images`
     }
 };

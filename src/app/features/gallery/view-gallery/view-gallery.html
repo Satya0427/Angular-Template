@@ -1,0 +1,14 @@
+<div class="gallery-container">
+    <cdk-virtual-scroll-viewport itemSize="40" (scrolledIndexChange)="getImages($event)"
+        class="table-container viewport">
+        <mat-card class="gallery-card" *ngFor="let image of images; index as i" [style.animationDelay]="i * 100 + 'ms'">
+            <img mat-card-image [src]="image.imageUrl" />
+
+            <!-- <mat-card-content>
+      <h3>{{ image.title }}</h3>
+    </mat-card-content> -->
+        </mat-card>
+    </cdk-virtual-scroll-viewport>
+</div>
+
+<!-- <img [src]="data.src" class="preview-image" /> -->

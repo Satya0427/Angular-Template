@@ -11,6 +11,10 @@ export const layoutRoutes: Routes = [
             {
                 path: 'user',
                 loadChildren: () => import('../../features/user/users.routes').then(m => m.USERS_ROUTES)
+            },
+            {
+                path: 'gallery',
+                loadChildren: () => import('../../features/gallery/gallery.routes').then(m => m.GalleryRoute)
             }
         ]
     }
